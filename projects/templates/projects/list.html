@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}
-Holder
+    Tracker
 {% endblock title %}
-{% block content%}
-        <div>
-            <h1>My Projects</h1>
-            <p><a href="{% url 'create_project' %}">Create a new project</a></p>
-            {% if projects_list %}
+{% block content %}
+    <div>
+        <h1>My Projects</h1>
+        <p>
+            <a href="{% url 'create_project' %}">Create a new project</a>
+        </p>
+        {% if projects_list %}
             <table>
                 <thead>
                     <th>Name</th>
@@ -15,19 +17,17 @@ Holder
                 </thead>
                 <tbody>
                     {% for project in projects_list %}
-                    <tr>
-                        <td>
-                            <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
-                        </td>
-                        <td>{{ project.tasks.all|length }}</td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <a href="{% url 'show_project' project.id %}">{{ project.name }}</a>
+                            </td>
+                            <td>{{ project.tasks.all|length }}</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            {% else %}
-            <p>
-                You are not assigned to any projects
-            </p>
-            {% endif %}
-        </div>
-{% endblock content%}
+        {% else %}
+            <p>You are not assigned to any projects</p>
+        {% endif %}
+    </div>
+{% endblock content %}

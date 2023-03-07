@@ -1,12 +1,12 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block title %}
-Holder
+    Tracker
 {% endblock title %}
-{% block content%}
-        <div>
-            <h1>My Tasks</h1>
-            {% if task_object.all %}
+{% block content %}
+    <div>
+        <h1>My Tasks</h1>
+        {% if task_object.all %}
             <table>
                 <thead>
                     <th>Name</th>
@@ -16,19 +16,17 @@ Holder
                 </thead>
                 <tbody>
                     {% for task in task_object.all %}
-                    <tr>
-                        <td>{{ task.name }}</td>
-                        <td>{{ task.start_date }}</td>
-                        <td>{{ task.due_date }}</td>
-                        <td>{{ task.is_completed|yesno }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ task.name }}</td>
+                            <td>{{ task.start_date }}</td>
+                            <td>{{ task.due_date }}</td>
+                            <td>{{ task.is_completed|yesno }}</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
-            {% else %}
-            <p>
-                You have no tasks
-            </p>
-            {% endif %}
-        </div>
+        {% else %}
+            <p>You have no tasks</p>
+        {% endif %}
+    </div>
 {% endblock content %}
