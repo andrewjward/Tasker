@@ -4,8 +4,8 @@
     Tracker
 {% endblock title %}
 {% block content %}
-    <div>
-        <h1>Creat a new task</h1>
+    <div class="task-form">
+        <h1>Create a new task</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
